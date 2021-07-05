@@ -14,6 +14,8 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -407,7 +409,6 @@
 
 
 
-  <script src="//code.tidio.co/6rf7ja5b6ops0aoxcks9yryddgfixdm4.js"></script>
 
 
 
@@ -418,10 +419,18 @@
   
 
   
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://www.foo-bar.top/',]
+      });
+      });
+  </script>
 
 
-  <!-- <script src="//code.tidio.co/6rf7ja5b6ops0aoxcks9yryddgfixdm4.js" async>
-  </script> -->
   <script>
     window.addEventListener("load", function(){
       setTimeout(function() {
