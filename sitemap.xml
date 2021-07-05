@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.foo-bar.top/categories/index.html</loc>
+    
+    <lastmod>2021-07-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.foo-bar.top/tags/index.html</loc>
+    
+    <lastmod>2021-07-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.foo-bar.top/about/index.html</loc>
     
     <lastmod>2021-07-04</lastmod>
