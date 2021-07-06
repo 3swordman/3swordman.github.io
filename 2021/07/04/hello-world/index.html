@@ -53,8 +53,51 @@
 
   <title>Hello World | My blog</title>
   <style>
-.markdown-body {
-  font-family: inherit !important;
+.links-of-author-item > a:before {
+  display: none;
+}
+.gt-container .markdown-body {
+  font-family: inherit;
+}
+.gt-container .gt-header-controls .gt-btn {
+  box-shadow: .1em;
+  background-color: rgb(245, 245, 245);
+  color: rgb(85, 85, 85);
+  color: var(--text-color);
+  border: none;
+}
+.comments .gt-container .gt-meta {
+  border-bottom: none;
+}
+.comments .gt-container a {
+  color: rgb(85, 85, 85);
+  color: var(--text-color);
+}
+.gt-container .gt-header-controls .gt-btn:hover {
+  background-color: rgb(245, 245, 245);
+}
+.gt-container .gt-popup .gt-copyright {
+  display: none;
+}
+.gt-ico .gt-container .gt-svg svg {
+  color: rgb(34, 34, 34);
+  color: var(--link-color);
+  fill: rgb(34, 34, 34);
+  fill: var(--link-color);
+}
+.gt-container .gt-meta .gt-popup {
+  border: none;
+  border-style: none;
+  border-width: 0;
+  background: none;
+}
+.gt-container .gt-comments .gt-comment .gt-comment-content {
+  background-color: rgb(248, 248, 248);
+}
+.gt-container a {
+  color: rgb(85, 85, 85);
+  color: var(--text-color);
+  border-bottom: none;
 }
 </style>
 <script>
@@ -468,12 +511,49 @@
 
 
   <script>
-    window.addEventListener("load", function(){
+    window.addEventListener("load", function() {
+      function redoManyTimes(redoFunc) {
+        var result = redoFunc();
+        if (!result) {
+          setTimeout(redoManyTimes.bind(null, redoFunc), 1000);
+          return;
+        };
+      }
+
+
+      var styleElement = document.createElement("style");
+      styleElement.textContent =
+      ".input-group .material-icons:hover {" +
+      "  color: rgb(85, 85, 85) !important;" +
+      "  fill: rgb(85, 85, 85) !important;" +
+      "}" +
+      "#button-body {" +
+      "  color: rgb(85, 85, 85) !important;" +
+      "}" +
+      "#ic_logo {" +
+      "  display: none !important;" +
+      "}" +
+      "#ic_download {" +
+      "  display: none !important;" +
+      "}" +
+      '[aria-label="Powered by Tidio."] {' +
+      "  display: none !important;" +
+      "}";
+
+      var changeColor = function() {
+        console.log("do");
+        var a = document.querySelector("#tidio-chat-iframe");
+        if (!a) return false;
+        a.contentDocument.head.appendChild(styleElement);
+        return true;
+      };
+
       setTimeout(function() {
         var script = document.createElement("script");
         script.src = "//code.tidio.co/6rf7ja5b6ops0aoxcks9yryddgfixdm4.js";
         script.async = true;
         script.defer = true;
+        script.onload = redoManyTimes.bind(null, changeColor);
         document.body.appendChild(script);
       }, 100);
     })
@@ -512,7 +592,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
   <script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-alpha.4/dist/fancybox.umd.js"></script>
   <script>
     document.querySelectorAll('.post-body :not(a) > img, .post-body > img').forEach(element => {
-      var imageLink = element.getAttribute('data-src') || element.getAttribute('data-src');
+      var imageLink = element.getAttribute('src') || element.getAttribute('data-src');
       var imageWrapLink = document.createElement('a');
       imageWrapLink.className = 'fancybox fancybox.image';
       imageWrapLink.href = imageLink;
