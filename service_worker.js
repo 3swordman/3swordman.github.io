@@ -1,4 +1,4 @@
-var cacheVersion = "v2";
+var cacheVersion = "v1";
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(cacheVersion)
@@ -59,7 +59,7 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  var allowedHosts = /(localhost|fonts\.googleapis\.com|fonts\.gstatic\.com|www\.foo-bar\.top|cdn\.jsdelivr\.net|api\.github\.com|widget-v4\.tidiochat\.com|code\.tidio\.co|twemoji\.maxcdn\.com)/i;
+  var allowedHosts = /(localhost|fonts\.googleapis\.com|fonts\.gstatic\.com|www\.foo-bar\.top|cdn\.jsdelivr\.net|api\.github\.com|widget-v4\.tidiochat\.com|code\.tidio\.co|twemoji\.maxcdn\.com|avatars\.githubusercontent\.com)/i;
   var deniedHosts = /(service_worker.js)/i;
   var htmlDocument = /(\/|\.html)$/i;
   if (allowedHosts.test(event.request.url) && !deniedHosts.test(event.request.url)) {
