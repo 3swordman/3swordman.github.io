@@ -99,7 +99,6 @@ self.addEventListener('fetch', function(event) {
                         cache.put(event.request, fetchedResponse.clone());
                       } catch (err) {
                         console.warn(err);
-                        cache.put(event.request, fetchedResponse);
                       }
                     })
                   return fetchedResponse;
