@@ -95,10 +95,12 @@ self.addEventListener('fetch', function(event) {
                   caches
                     .open(cacheVersion)
                     .then(function (cache) {
-                      cache.put(event.request, fetchedResponse.clone());
-                    })
-                    .catch(function (err) {
-                      console.warn(err);
+                      try {
+                        cache.put(event.request, fetchedResponse.clone());
+                      } catch (err) {
+                        console.warn(err);
+                        cache.put(event.request, fetchedResponse);
+                      }
                     })
                   return fetchedResponse;
                 })
