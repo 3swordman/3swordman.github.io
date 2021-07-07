@@ -1,2 +1,9 @@
 User-agent: *
 Disallow: 
+User-agent: YandexCalendar
+Allow: atom.xml
+Disallow: 
+
+User-agent: YandexMobileBot
+Allow: atom.xml
+Disallow: 
