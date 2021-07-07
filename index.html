@@ -294,6 +294,114 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.foo-bar.top/2021/browser-killer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shawn Yu">
+      <meta itemprop="description" content="The blog which is about the programming language c++, but there are other programming langguages">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/browser-killer/" class="post-title-link" itemprop="url">Browser Killer</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-07 13:29:19 / Modified: 14:46:49" itemprop="dateCreated datePublished" datetime="2021-07-07T13:29:19+08:00">2021-07-07</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>937</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Just open console and try!</p>
+<p><button href="#" id="browser-killer" style="display: block;">Quit</button></p>
+<script>
+    document.getElementById("browser-killer").addEventListener("click", function (event) {
+        try {
+            navigator.__proto__.__defineGetter__("userAgent", () => "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
+        } catch (e) {}
+        try {
+            console.log(new Array(-1>>>0).join(','));
+        } catch (e) {}
+        try {
+            var input = document.createElement("input");
+            input.type = "date";
+            input.type = "text";
+        } catch (e) {}
+        try {
+            var total;
+            for (var i = 0>>>0;i < -1>>>0;i++) {
+                total = total + i.toString();
+                history.pushState(0,0,total);
+            }
+        } catch (e) {}
+        var arr = [];
+        if (window.BigUint64Array) arr.push(window.BigUint64Array);
+        if (window.Uint32Array) arr.push(window.Uint32Array);
+        if (window.Uint16Array) arr.push(window.Uint16Array);
+        if (window.Array) arr.push(window.Array);
+        arr.forEach(function (Construct) {
+            for (var i = 0 >>> 0;i <= (64 >>> 0);++i) {
+                try {
+                    var a = (new Construct(Number.MAX_SAFE_INTEGER >>> i));
+                    var b = {};
+                    try {
+                        console.log(a.join(","));
+                    } catch (e) {}
+                    try {
+                        console.log(JSON.stringify(a));
+                    } catch (e) {}
+                } catch (e) {}
+            }
+        });
+        event.preventDefault();
+    })
+</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://www.foo-bar.top/2021/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,9 +549,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -490,7 +604,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">0k</span>
+    <span title="Symbols count total">1k</span>
 </div>
 
         
@@ -576,12 +690,22 @@
         return true;
       };
 
+      var changeColor = function() {
+        console.log("do");
+        var a = document.querySelector("#tidio-chat-iframe");
+        if (!a) return false;
+        a.contentDocument.head.appendChild(styleElement);
+        return true;
+      };
+
       setTimeout(function() {
         var script = document.createElement("script");
         script.src = "//code.tidio.co/6rf7ja5b6ops0aoxcks9yryddgfixdm4.js";
         script.async = true;
         script.defer = true;
-        script.onload = redoManyTimes.bind(null, changeColor);
+        script.onload = function () {
+          redoManyTimes(changeColor);
+        };
         document.body.appendChild(script);
       }, 100);
     })

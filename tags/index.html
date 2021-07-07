@@ -318,10 +318,10 @@
       <div class="post-body">
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-              No tags
+              1 tag in total
             </div>
             <div class="tag-cloud-tags">
-              
+              <a href="/tags/frontend/" style="font-size: 12px; color: #ccc">frontend</a>
             </div>
           </div>
         
@@ -399,9 +399,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -448,7 +454,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">0k</span>
+    <span title="Symbols count total">1k</span>
 </div>
 
         
@@ -534,12 +540,22 @@
         return true;
       };
 
+      var changeColor = function() {
+        console.log("do");
+        var a = document.querySelector("#tidio-chat-iframe");
+        if (!a) return false;
+        a.contentDocument.head.appendChild(styleElement);
+        return true;
+      };
+
       setTimeout(function() {
         var script = document.createElement("script");
         script.src = "//code.tidio.co/6rf7ja5b6ops0aoxcks9yryddgfixdm4.js";
         script.async = true;
         script.defer = true;
-        script.onload = redoManyTimes.bind(null, changeColor);
+        script.onload = function () {
+          redoManyTimes(changeColor);
+        };
         document.body.appendChild(script);
       }, 100);
     })

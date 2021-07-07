@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.foo-bar.top/2021/browser-killer/</loc>
+    
+    <lastmod>2021-07-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.foo-bar.top/2021/hello-world/</loc>
     
     <lastmod>2021-07-06</lastmod>
@@ -37,6 +44,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://www.foo-bar.top/tags/frontend/</loc>
+    <lastmod>2021-07-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 
   

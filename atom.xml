@@ -6,7 +6,7 @@
   <link href="http://www.foo-bar.top/atom.xml" rel="self"/>
   
   <link href="http://www.foo-bar.top/"/>
-  <updated>2021-07-06T02:35:14.958Z</updated>
+  <updated>2021-07-07T06:46:49.575Z</updated>
   <id>http://www.foo-bar.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Browser Killer</title>
+    <link href="http://www.foo-bar.top/2021/browser-killer/"/>
+    <id>http://www.foo-bar.top/2021/browser-killer/</id>
+    <published>2021-07-07T05:29:19.000Z</published>
+    <updated>2021-07-07T06:46:49.575Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Just open console and try!&lt;/p&gt;
+&lt;p&gt;&lt;button href=&quot;#&quot; id=&quot;browser-killer&quot; style=&quot;display: block;&quot;&gt;Quit&lt;/button&gt;&lt;/p&gt;
+&lt;script&gt;
+   </summary>
+        
+      
+    
+    
+    
+    
+    <category term="frontend" scheme="http://www.foo-bar.top/tags/frontend/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
