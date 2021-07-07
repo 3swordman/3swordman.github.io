@@ -2,28 +2,6 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
-  <!-- Clarity tracking code for http://www.foo-bar.top -->
-  <script>
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "7g8sxxqy33");
-  </script>
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" defer>
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-     ym(82647568, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true
-     });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/82647568" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -46,6 +24,28 @@
     var CONFIG = {"hostname":"www.foo-bar.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
+  <!-- Clarity tracking code for http://www.foo-bar.top -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "7g8sxxqy33");
+  </script>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" defer>
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+     ym(82647568, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/82647568" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
   <meta name="description" content="The blog which is about the programming language c++, but there are other programming langguages">
 <meta property="og:type" content="website">
 <meta property="og:title" content="My blog">
@@ -72,6 +72,9 @@
 
   <title>Archive | My blog</title>
   <style>
+.post-title {
+  text-transform: capitalize;
+}
 .pace-progress[data-progress="98"] {
   display: none;
 }
@@ -126,6 +129,7 @@
 }
 </style>
 <script>
+  document.title = document.title[0].toUpperCase() + document.title.slice(1, document.title.length);
   window.addEventListener("load", function() {
     [].forEach.call(document.querySelectorAll(".highlight.bash"), function (element) {
       element.addEventListener("copy", function (event) {
@@ -503,7 +507,7 @@
 
       var styleElement = document.createElement("style");
       styleElement.textContent =
-      ".input-group .material-icons:hover {" +
+      ".input-group .material-icons:hover svg, .input-group .material-icons.active svg, .material-icons {" +
       "  color: rgb(85, 85, 85) !important;" +
       "  fill: rgb(85, 85, 85) !important;" +
       "}" +

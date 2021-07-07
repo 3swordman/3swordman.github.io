@@ -27,13 +27,11 @@ var cacheAssets = [
 self.addEventListener('install', function (event) {
   event
     .waitUntil(
-      caches.open(cacheVersion)
-        .then(function (cache) {
-          return cache.addAll(cacheAssets);
-        })
-        .then(function() {
-          return self.skipWaiting();
-        })
+      (async function () {
+        let cache = await caches.open(cacheVersion);
+        await cache.addAll(cacheAssets);
+        return self.skipWaiting();
+      })()
     );
 });
 
@@ -56,7 +54,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var imageHosts = /(images\.unsplash\.com)/i
-  var allowedHosts = /(localhost|googleapis\.com|gstatic\.com|foo-bar\.top|cdn\.jsdelivr\.net|tidiochat\.com|tidio\.co|maxcdn\.com|avatars\.githubusercontent\.com|clarity.ms|yandex.ru)/i;
+  var allowedHosts = /(localhost|googleapis\.com|gstatic\.com|foo-bar\.top|cdn\.jsdelivr\.net|tidiochat\.com|tidio\.co|maxcdn\.com|avatars\.githubusercontent\.com|clarity\.ms|yandex\.ru|cdn\.bootcdn\.net)/i;
   var deniedHosts = /(service_worker.js|collect)/i;
   var htmlDocument = /(\/|\.html)$/i;
   if ((allowedHosts.test(event.request.url) || imageHosts.test(event.request.url)) && !deniedHosts.test(event.request.url) && (event.request.method == "POST")) {
