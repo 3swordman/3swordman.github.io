@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="preconnect" href="//cdn.jsdelivr.net">
+  <link rel="preconnect" href="//cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -592,6 +593,29 @@
 
 
   <script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-alpha.4/dist/fancybox.umd.js"></script>
+  <script src="//cdn.bootcdn.net/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+  <script>
+    var name = faker.name.findName();
+    var document_;
+    try {
+      document.querySelector(".copyright").querySelector(".author").innerHTML = name;
+      document.querySelector(".site-author-name").innerHTML = name;
+    } catch (e) {}
+    setInterval(function() {
+      try {
+        if (!document_) document_ = document.querySelector("#tidio-chat-iframe").contentDocument;
+        var element1 = document_.querySelector(".chat-header").childNodes[1];
+        if (element1.getAttribute("aria-label") == null) {
+          element1.className = "twolines";
+          element1.innerHTML = '<span class="top-heading">与进行交谈 </span>' + name;
+        }
+        var element2 = document_.querySelector(".heading-hover");
+        element2.innerHTML = '与进行交谈 ' + name;
+        var element3 = document_.querySelector(".ava48");
+        element3.innerHTML = name;
+      } catch (e) {}
+    }, 1000);
+  </script>
   <script>
     document.querySelectorAll('.post-body :not(a) > img, .post-body > img').forEach(element => {
       var imageLink = element.getAttribute('src') || element.getAttribute('data-src');

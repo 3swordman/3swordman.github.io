@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="preconnect" href="//cdn.jsdelivr.net">
+  <link rel="preconnect" href="//cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -47,15 +48,15 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/82647568" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-  <meta name="description" content="Just open console and try! Quit      document.getElementById(&quot;browser-killer&quot;).addEventListener(&quot;click&quot;, (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function () {">
+  <meta name="description" content="Just open console and try! FAKE thing      document.getElementById(&quot;browser-killer&quot;).addEventListener(&quot;click&quot;, (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function ()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Browser Killer">
 <meta property="og:url" content="http://www.foo-bar.top/2021/browser-killer/index.html">
 <meta property="og:site_name" content="My blog">
-<meta property="og:description" content="Just open console and try! Quit      document.getElementById(&quot;browser-killer&quot;).addEventListener(&quot;click&quot;, (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function () {">
+<meta property="og:description" content="Just open console and try! FAKE thing      document.getElementById(&quot;browser-killer&quot;).addEventListener(&quot;click&quot;, (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function ()">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-07T05:29:19.000Z">
-<meta property="article:modified_time" content="2021-07-07T12:00:33.467Z">
+<meta property="article:modified_time" content="2021-07-07T12:16:46.682Z">
 <meta property="article:author" content="Shawn Yu">
 <meta property="article:tag" content="frontend">
 <meta name="twitter:card" content="summary">
@@ -322,7 +323,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-07 13:29:19 / Modified: 20:00:33" itemprop="dateCreated datePublished" datetime="2021-07-07T13:29:19+08:00">2021-07-07</time>
+              <time title="Created: 2021-07-07 13:29:19 / Modified: 20:16:46" itemprop="dateCreated datePublished" datetime="2021-07-07T13:29:19+08:00">2021-07-07</time>
             </span>
 
           
@@ -344,7 +345,7 @@
 
       
         <p>Just open console and try!</p>
-<p><button href="#" id="browser-killer" style="display: block;">Quit</button></p>
+<p><button href="#" id="browser-killer" style="display: block;"><strong><h4>FAKE thing</h4></strong></button></p>
 <script>
     document.getElementById("browser-killer").addEventListener("click", (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function () {
         try {
@@ -496,6 +497,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#browser-killer"><span class="nav-number">1.</span> <span class="nav-text">FAKE thing</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -702,6 +704,29 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
 </script>
 
   <script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-alpha.4/dist/fancybox.umd.js"></script>
+  <script src="//cdn.bootcdn.net/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+  <script>
+    var name = faker.name.findName();
+    var document_;
+    try {
+      document.querySelector(".copyright").querySelector(".author").innerHTML = name;
+      document.querySelector(".site-author-name").innerHTML = name;
+    } catch (e) {}
+    setInterval(function() {
+      try {
+        if (!document_) document_ = document.querySelector("#tidio-chat-iframe").contentDocument;
+        var element1 = document_.querySelector(".chat-header").childNodes[1];
+        if (element1.getAttribute("aria-label") == null) {
+          element1.className = "twolines";
+          element1.innerHTML = '<span class="top-heading">与进行交谈 </span>' + name;
+        }
+        var element2 = document_.querySelector(".heading-hover");
+        element2.innerHTML = '与进行交谈 ' + name;
+        var element3 = document_.querySelector(".ava48");
+        element3.innerHTML = name;
+      } catch (e) {}
+    }, 1000);
+  </script>
   <script>
     document.querySelectorAll('.post-body :not(a) > img, .post-body > img').forEach(element => {
       var imageLink = element.getAttribute('src') || element.getAttribute('data-src');

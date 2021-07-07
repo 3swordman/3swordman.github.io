@@ -4,7 +4,7 @@
     <title>Browser Killer</title>
     <url>/2021/browser-killer/</url>
     <content><![CDATA[<p>Just open console and try!</p>
-<p><button href="#" id="browser-killer" style="display: block;">Quit</button></p>
+<p><button href="#" id="browser-killer" style="display: block;"><strong><h4>FAKE thing</h4></strong></button></p>
 <script>
     document.getElementById("browser-killer").addEventListener("click", (function(a){return function(){setInterval(function(){setTimeout(a,0)},0)}})(function () {
         try {
