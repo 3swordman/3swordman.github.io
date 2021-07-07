@@ -22,13 +22,7 @@ var cacheAssets = [
   '/images/favicon-32x32-next.png',
   '/images/logo.svg',
   '/js/schemes/muse.js',
-  '/js/schemes/pisces.js',
-  '/lib/font-awesome/css/all.min.css',
-  '/lib/pace/pace-theme-minimal.min.css',
-  '/lib/pace/pace.min.js',
-  '/lib/velocity/velocity.min.js',
-  '/lib/velocity/velocity.ui.min.js',
-  '/lib/anime.min.js'
+  '/js/schemes/pisces.js'
 ];
 self.addEventListener('install', function (event) {
   event
@@ -62,48 +56,48 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var imageHosts = /(images\.unsplash\.com)/i
-  var allowedHosts = /(localhost|googleapis\.com|gstatic\.com|foo-bar\.top|cdn\.jsdelivr\.net|tidiochat\.com|tidio\.co|maxcdn\.com|avatars\.githubusercontent\.com)/i;
-  var deniedHosts = /(service_worker.js)/i;
+  var allowedHosts = /(localhost|googleapis\.com|gstatic\.com|foo-bar\.top|cdn\.jsdelivr\.net|tidiochat\.com|tidio\.co|maxcdn\.com|avatars\.githubusercontent\.com|clarity.ms|yandex.ru)/i;
+  var deniedHosts = /(service_worker.js|collect)/i;
   var htmlDocument = /(\/|\.html)$/i;
-  if ((allowedHosts.test(event.request.url) || imageHosts.test(event.request.url)) && !deniedHosts.test(event.request.url)) {
+  if ((allowedHosts.test(event.request.url) || imageHosts.test(event.request.url)) && !deniedHosts.test(event.request.url) && (event.request.method == "POST")) {
     if (htmlDocument.test(event.request.url)) {
       event.respondWith(
-        fetch(event.request)
-          .then(function (response) {
-            caches
-              .open(cacheVersion)
-              .then(function (cache) {
-                cache.put(event.request, response.clone());
-              })
-              .catch(function (err) {
-                console.warn(err);
-              })
+        (async function() {
+          try {
+            let response = await fetch(event.request.clone());
+            try {
+              let cache = await caches.open(cacheVersion);
+              await cache.put(event.request.clone(), response.clone());
+            } catch (err) {
+              console.warn(err);
+            }
             return response;
-          })
-          .catch(function () {
+          } catch (e) {
             return caches.match(event.request);
-          })
+          }
+        })()
       );
     } else {
       event.respondWith(
-        caches.match(event.request)
-          .then(function (cachedResponse) {
-            return (
-              cachedResponse || 
-              fetch(event.request)
-                .then(function (fetchedResponse) {
-                  caches
-                    .open(cacheVersion)
-                    .then(function (cache) {
-                      cache.put(event.request, fetchedResponse.clone());
-                    })
-                    .catch(function (err) {
-                      console.warn(err);
-                    })
-                  return fetchedResponse;
-                })
-            );
-          })
+        (async function() {
+          let cachedResponse = await caches.match(event.request);
+          let response;
+          if (cachedResponse) {
+            response = cachedResponse;
+          } else {
+            response = (async function() {
+              let fetchedResponse = await fetch(event.request.clone());
+              let cache = await caches.open(cacheVersion);
+              try {
+                await cache.put(event.request.clone(), fetchedResponse.clone());
+              } catch (err) {
+                console.warn(err);
+              }
+              return fetchedResponse;
+            })()
+          }
+          return response;
+        })()
       );
     }
   }
